@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b41fc3dad724fcb51632203c0f17800f0f4a5e44466899472b123e0adac30023"
+            "sha256": "6c48fe906e1e5118429a391d3e88619fe63fb0ab13ffd2512f274b8eb219cab0"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -32,12 +32,26 @@
             "index": "pypi",
             "version": "==1.7.2"
         },
+        "python-http-client": {
+            "hashes": [
+                "sha256:7e430f4b9dd2b621b0051f6a362f103447ea8e267594c602a5c502a0c694ee38"
+            ],
+            "version": "==3.1.0"
+        },
         "pytz": {
             "hashes": [
                 "sha256:26c0b32e437e54a18161324a2fca3c4b9846b74a8dccddd843113109e1116b32",
                 "sha256:c894d57500a4cd2d5c71114aaab77dbab5eabd9022308ce5ac9bb93a60a6f0c7"
             ],
             "version": "==2019.2"
+        },
+        "sendgrid": {
+            "hashes": [
+                "sha256:297d33363a70df9b39419210e1273b165d487730e85c495695e0015bc626db71",
+                "sha256:8b82c8c801dde8180a567913a9f80d8a63f38e39f209edde302b6df899b4bca1"
+            ],
+            "index": "pypi",
+            "version": "==6.0.5"
         },
         "sqlparse": {
             "hashes": [
