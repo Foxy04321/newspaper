@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1>Edit</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+   <button class="btn btn-info mr-2 ml-2" type="submit" style="float: right">Update</button>
+        <button class="btn btn-danger mr-2" type="reset" style="float: right"><a href="{% url 'article_list' %}" style="text-decoration: none; color: white; float: right">Not update</a></button>
+    </form>
+{% endblock content %}

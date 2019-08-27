@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     #Local
     'users',
     'pages',
+    'articles',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -112,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'europe/moscow'
 
 USE_I18N = True
 

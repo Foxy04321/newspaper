@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1>Edit</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{ article.title }}"?</p>
+        <button class="btn btn-danger ml-2" type="submit">Delete</button>
+        <button class="btn btn-success ml-2" type="reset"><a href="{% url 'article_list' %}" style="text-decoration: none; color: white">Not delete</a></button>
+    </form>
+{% endblock content %}
