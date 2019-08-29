@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Articles{% endblock title %}
+
+{% block content %}
+    <h1>Your articles</h1>
+    {% for article in article_list %}
+        {% if article.author == user %}
+            <div class="card">
+                <div class="card-header">
+                    <span class="font-weight-bold" style="font-family: 'Acme', sans-serif; font-size: 24px"><a href="{% url 'article_detail' article.pk %}" style="text-decoration: none; color: black">{{ article.title }}</a></span>
+                    <span class="text-muted" style="font-family: 'Acme', sans-serif; font-size: 20px; font-style: italic;">by {{ article.author }} | {{ article.data }}</span>
+                </div>
+            </div>
+            <div class="card-body" style="font-family: 'Hepta Slab', serif; font-size: 16px">
+                {{ article.body }}
+            </div>
+            {% if article.author == user or user.is_superuser %}
+                <div class="card-footer text-center text-muted">
+                    <a href="{% url 'article_edit' article.pk %}" style="text-decoration: none">Edit</a> | <a href="{% url 'article_delete' article.pk %}" style="text-decoration: none">Delete</a>
+                </div>
+            {% endif %}
+            <br />
+        {% endif %}
+    {% empty %}
+        <p>You didn't write articles!</p>
+    {% endfor %}
+    {% if not_articles %}
+        <p>You didn't write articles!</p>
+    {% endif %}
+{% endblock content %}

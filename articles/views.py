@@ -9,14 +9,24 @@ from users.models import CustomUser
 
 # Create your views here.
 
+class MyArticlesListView(LoginRequiredMixin, ListView):
+    model = Article
+    template_name = 'my_articles.html'
+
+    def get_queryset(self):
+        return Article.objects.filter(author=self.request.user)
+
+
 class ArticleListView(ListView):
     model = Article
     template_name = 'article_list.html'
+
 
 class ArticleDetailView(LoginRequiredMixin, DetailView):
     model = Article
     template_name = 'article_detail.html'
     login_url = 'login'
+
 
 class ArticleUpdateView(LoginRequiredMixin, UpdateView):
     model = Article
@@ -30,6 +40,7 @@ class ArticleUpdateView(LoginRequiredMixin, UpdateView):
             return redirect(reverse('home'))
         return super().form_valid(form)
 
+
 class ArticleDeleteView(LoginRequiredMixin, DeleteView):
     model = Article
     template_name = 'article_delete.html'
@@ -41,6 +52,7 @@ class ArticleDeleteView(LoginRequiredMixin, DeleteView):
         if self.request.user != self.object.author and not user.is_superuser:
             return redirect(reverse('home'))
         return super().form_valid(form)
+
 
 class ArticleCreateView(LoginRequiredMixin, CreateView):
     model = Article
