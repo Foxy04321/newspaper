@@ -1,11 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="article-entry">
-        <h2>{{ article.title }}</h2>
-        <p>by {{ article.author }} | {{ article.date }}</p>
-        <p>{{ article.body }}</p>
-    </div>
-    <p><a href="{% url 'article_edit' article.pk %}">Edit</a> | <a href="{% url 'article_delete' article.pk %}">Delete</a></p>
-    <p>Back to <a href="{% url 'article_list' %}">All Articles</a>.</p>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title" style="font-family: 'Acme', sans-serif; font-size: 36px">{{ article.title }}</h1>
+        </div>
+        <div class="modal-body" style="font-family: 'Hepta Slab', serif; font-size: 16px">
+            <p>{{ article.body }}</p>
+            <p align="right" style="font-style: italic">By {{ article.author }} | {{ article.data}}</p>
+        </div>
+            {% if user.is_superuser or user == article.author %}
+                <div class="modal-footer">
+                    <a href="{% url 'article_edit' article.pk %}" style="text-decoration: none; font-size: 18px; color: aliceblue"><button type="button" class="btn btn-primary" data-dismiss="modal" >Edit</button></a>
+                    <a href="{% url 'article_delete' article.pk %}" style="text-decoration: none; font-size: 18px; color: aliceblue"><button type="button" class="btn btn-danger">Delete</button></a>
+                </div>
+            {% endif %}
+        </div>
+        <br />
+        <p align="middle">Back to <a href="{% url 'article_list' %}">All Articles</a>.</p>
+
 {% endblock content %}
