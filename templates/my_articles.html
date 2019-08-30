@@ -2,6 +2,10 @@
 
 {% block title %}Articles{% endblock title %}
 
+{% block go_back %}
+    <button class="badge badge-pill badge-dark" type="reset" style="outline: none; margin: 0px; margin-left: 20px; padding: 0px"><span class="badge badge-pill badge-dark" onclick="history.back()" style="font-size: 16px;">Go to back...</span></button>
+{% endblock go_back %}
+
 {% block content %}
     <h1>Your articles</h1>
     {% for article in article_list %}

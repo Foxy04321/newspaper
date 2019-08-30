@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block go_back %}
+    <a href="{% url 'article_list' %}" style="color: white; text-decoration: none"><button class="badge badge-pill badge-dark" type="reset" style="outline: none; margin-left: 20px; font-size: 16px;">Go to back...</button></a>
+{% endblock go_back %}
 
 {% block content %}
     <div class="modal-content">
@@ -15,8 +20,18 @@
                     <a href="{% url 'article_delete' article.pk %}" style="text-decoration: none; font-size: 18px; color: aliceblue"><button type="button" class="btn btn-danger">Delete</button></a>
                 </div>
             {% endif %}
-        </div>
+    </div>
         <br />
-        <p align="middle">Back to <a href="{% url 'article_list' %}">All Articles</a>.</p>
-
+        <div class="list-group">
+            <a href="{% url 'comment_new' article.pk %}" style="text-decoration: none; font-size: 18px; color: white"><li class="list-group-item active">To comment...</li></a>
+            {% for comment in article.comments.all %}
+                <li class="list-group-item">
+                    <span style="font-family: 'Permanent Marker', cursive; font-size: 18px">{{ comment.author }}</span>
+                    <span style="font-family: 'Hepta Slab', serif; font-size: 15px"> commented:</span>
+                    <dev>
+                        <p align="middle" style="font-family: 'Gloria Hallelujah', cursive;">{{ comment }}</p>
+                    </dev>
+                </li>
+            {% endfor %}
+        </div>
 {% endblock content %}

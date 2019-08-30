@@ -8,6 +8,6 @@
         {{ form|crispy }}
         <button class="btn btn-info mr-2 ml-2" type="submit" style="float: right">Update</button>
     </form>
-    <a href="{% url 'article_list' %}" style="text-decoration: none; color: white; float: right"><button class="btn btn-danger mr-2" type="reset" style="float: right" >Not update</button></a>
+    <a href="{% url 'article_detail' article.pk %}" style="text-decoration: none; color: white; float: right"><button class="btn btn-danger mr-2" type="reset" style="float: right" >Not update</button></a>
 
 {% endblock content %}
