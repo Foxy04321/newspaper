@@ -9,6 +9,7 @@ verify_ssl = true
 django = "*"
 django-crispy-forms = "*"
 sendgrid = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"
